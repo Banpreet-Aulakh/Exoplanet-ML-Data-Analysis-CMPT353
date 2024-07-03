@@ -12,6 +12,8 @@ This project aims to analyze telescope light curve data to identify potential ex
 
 # Data
 
+- The exoplanet candidate, and confirmed exoplanet data was gathered via the [NASA Exoplanet Archive](https://exoplanetarchive.ipac.caltech.edu/index.html).
+
 # Methods 
 
 # Results
