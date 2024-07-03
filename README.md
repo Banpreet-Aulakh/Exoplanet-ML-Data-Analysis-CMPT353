@@ -23,4 +23,7 @@ lightkurve
 
 
 # Team
-Banpreet Aulakh, Jordan Clough 
+
+Banpreet Aulakh 
+
+Jordan Clough 
