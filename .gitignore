@@ -1,3 +1,7 @@
 .venv
 data/confirmed_lightcurve_processed.zip
 data/false_lightcurve_processed.zip
+/mastDownload
+/random_TIC_for_testing
+
+
