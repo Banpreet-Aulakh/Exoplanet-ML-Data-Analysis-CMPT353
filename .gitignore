@@ -7,4 +7,5 @@ data/confirmed_lightcurves
 data/false_lightcurves
 data/validation_lightcurves/confirmed_validation
 data/validation_lightcurves/false_validation
+data/validation_lightcurves/other_confirmed
 models
