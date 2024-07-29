@@ -42,6 +42,6 @@ def process_and_save(tic_id_list, save_dir):
         break  # break if successful
 
 # Example usage:
-tic_ids = ['356937336']  # List of TIC IDs
+tic_ids = ['391115637']  # List of TIC IDs
 save_directory = 'random_TIC_for_testing'
 process_and_save(tic_ids, save_directory)
