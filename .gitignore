@@ -3,5 +3,7 @@ data/confirmed_lightcurve_processed.zip
 data/false_lightcurve_processed.zip
 /mastDownload
 /random_TIC_for_testing
-
-
+data/confirmed_lightcurves
+data/false_lightcurves
+data/validation_lightcurves/confirmed_validation
+data/validation_lightcurves/false_validation
