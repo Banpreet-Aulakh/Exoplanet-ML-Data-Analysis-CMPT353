@@ -20,6 +20,7 @@ This project focuses on creating a model to classify false positive planets and 
 - The exoplanet candidate and confirmed exoplanet data was gathered via the [NASA Exoplanet Archive](https://exoplanetarchive.ipac.caltech.edu/index.html).
 - Individual TIC Data to process for the model was gathered from the [MAST Archive](https://archive.stsci.edu/) using their TESS data products.
 - Two main CSV files were created: `confirmed_planets.csv` and `false_positives.csv`.
+- The TIC IDs from the CSV files were used to download the lightcurve data and save as `{TIC_ID}_lightcurves.csv`
 
 ## Methods
 ### Data Collection and Processing
