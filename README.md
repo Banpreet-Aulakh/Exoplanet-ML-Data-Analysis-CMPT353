@@ -53,13 +53,15 @@ The performance of the models is summarized below:
 
 ## Usage
 ### Training the Models
-1. Run `lightcurve_downloader.ipynb` to download the light curve data.
-2. Use `data_exploration.ipynb` to process the data and create the necessary CSV files.
-3. Train the Random Forest models by running `lightcurve_randforest.ipynb` and `lightcurve_randforest_feature_engineering.ipynb`.
+1. Use `data_exploration.ipynb` to process the data and create the necessary CSV files.
+2. Run `lightcurve_downloader.ipynb` to download the light curve data.
+3. Separate the training and validation data into different folders manually. (Taking a small percentage of ~2000 files should not effect the model's performance that much)
+4. Place validation data inside data/validation_lightcurves/confirmed_validation and data/validation_lightcurves/false_validation. (For the same model performance take 30 from each)
+5. Train the Random Forest models by running `lightcurve_randforest.ipynb` and `lightcurve_randforest_feature_engineering.ipynb`.
 
 ### Evaluating the Models
-1. Ensure you have the validation dataset in the correct directories.
-2. Run `evaluate_model.py` to evaluate both models using the validation dataset.
+1. Ensure you have the validation dataset in the correct directories. 
+2. Run `evaluate_model.py` to evaluate both stats-based classifier models using the validation dataset.
 
 ## Dependencies
 - lightkurve
