@@ -20,6 +20,7 @@ This project focuses on creating a model to classify false positive planets and 
 - The exoplanet candidate and confirmed exoplanet data was gathered via the [NASA Exoplanet Archive](https://exoplanetarchive.ipac.caltech.edu/index.html).
 - Individual TIC Data to process for the model was gathered from the [MAST Archive](https://archive.stsci.edu/) using their TESS data products.
 - Two main CSV files were created: `confirmed_planets.csv` and `false_positives.csv`.
+- The TIC IDs from the CSV files were used to download the lightcurve data from MAST using AstroQuery and saved as `{TIC_ID}_lightcurves.csv` in their respective directories
 
 ## Methods
 ### Data Collection and Processing
@@ -33,7 +34,7 @@ This project focuses on creating a model to classify false positive planets and 
 - **lightcurve_randforest_feature_engineering.ipynb**: Similar to the previous notebook but includes feature engineering to improve model performance.
 
 ### Model Evaluation
-- **evaluate_model.py**: Evaluates both models using a validation dataset consisting of 30 random files from the false and confirmed light curve directories. The validation files must be downloaded and separated manually.
+- **evaluate_model.py**: Evaluates both models using a validation dataset consisting of 60 random files from the false and confirmed light curve directories. The validation files must be downloaded and separated manually.
 
 ## Results
 The performance of the models is summarized below:
@@ -58,8 +59,8 @@ The performance of the models is summarized below:
 3. Train the Random Forest models by running `train_statsmodels.py`.
 
 ### Evaluating the Models
-1. Ensure you have the validation dataset in the correct directories.
-2. Run `evaluate_model.py` to evaluate both models using the validation dataset.
+1. Ensure you have the validation dataset in the correct directories. 
+2. Run `evaluate_model.py` to evaluate both stats-based classifier models using the validation dataset.
 
 ## Dependencies
 - lightkurve
