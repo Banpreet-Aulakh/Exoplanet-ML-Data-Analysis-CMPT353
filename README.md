@@ -40,22 +40,22 @@ The performance of the models is summarized below:
 - **Stats-based Classifier (First Model)**:
   - Initial high accuracy on row classification: 99.7%
   - Final performance: 
-    - Accuracy: 0.7167
-    - Precision: 0.67
-    - Recall: 0.87
-    - F1 Score: 0.75
+    - Accuracy: 0.72
+    - Precision: 0.71
+    - Recall: 0.73
+    - F1 Score: 0.72
 - **Stats-based Classifier with Feature Engineering (Second Model)**:
   - Final performance after feature engineering and optimization:
-    - Accuracy: ~0.6
-    - Precision: ~0.6
-    - Recall: ~0.6
-    - F1 Score: ~0.6
+    - Accuracy: 0.62
+    - Precision: 0.61
+    - Recall: 0.63
+    - F1 Score: 0.62
 
 ## Usage
 ### Training the Models
-1. Run `lightcurve_downloader.ipynb` to download the light curve data.
-2. Use `data_exploration.ipynb` to process the data and create the necessary CSV files.
-3. Train the Random Forest models by running `lightcurve_randforest.ipynb` and `lightcurve_randforest_feature_engineering.ipynb`.
+1. Use `data_exploration.ipynb` to process the data and create the necessary CSV files.
+2. Run `lightcurve_downloader.ipynb` to download the light curve data.
+3. Train the Random Forest models by running `train_statsmodels.py`.
 
 ### Evaluating the Models
 1. Ensure you have the validation dataset in the correct directories.

@@ -183,5 +183,5 @@ evaluate_model_mean(
     validation_confirmed_lc_path,
     validation_false_lc_path,
     raw_data_model,
-    threshold=0.3,
+    threshold=0.5,
 )
