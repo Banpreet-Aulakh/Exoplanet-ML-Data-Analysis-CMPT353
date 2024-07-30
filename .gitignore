@@ -9,3 +9,5 @@ data/validation_lightcurves/confirmed_validation
 data/validation_lightcurves/false_validation
 data/validation_lightcurves/other_confirmed
 models
+data/confirmed_feature_engineered.csv
+data/false_feature_engineered.csv
