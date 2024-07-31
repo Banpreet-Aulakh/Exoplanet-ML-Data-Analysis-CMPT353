@@ -32,9 +32,10 @@ This project focuses on creating a model to classify false positive planets and 
 ### Model Training
 - **lightcurve_randforest.ipynb**: Processes the data, trains a Random Forest model using raw light curve data, and saves the model using Joblib.
 - **lightcurve_randforest_feature_engineering.ipynb**: Similar to the previous notebook but includes feature engineering to improve model performance.
+- **train_statsmodels.py**: Combines the above notebooks with several quality improvements to output usable .pkl files
 
 ### Model Evaluation
-- **evaluate_model.py**: Evaluates both models using a validation dataset consisting of 60 random files from the false and confirmed light curve directories. The validation files must be downloaded and separated manually.
+- **evaluate_statsmodels.py**: Evaluates both models using a validation dataset consisting of 60 random files from the false and confirmed light curve directories. Files can be downloaded [here](https://drive.google.com/file/d/1aaVGC6HPTHWbxfuUbTZPnbUmz3ApxLam/view?usp=drive_link).
 
 ## Results
 The performance of the models is summarized below:
