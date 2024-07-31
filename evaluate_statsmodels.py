@@ -16,63 +16,6 @@ feature_engineering_model = joblib.load(feature_engineering_model_path)
 validation_confirmed_lc_path = "data/validation_lightcurves/confirmed_validation"
 validation_false_lc_path = "data/validation_lightcurves/false_validation"
 
-
-def mean_prediction(predictions, threshold=0.5):
-    return np.mean(predictions) > threshold
-
-
-def aggregate_predictions_mean(filepath, model, threshold=0.3):
-    df = pd.read_csv(filepath)
-    df = df.iloc[:, :13]
-    df = df.drop(["QUALITY", "ORBITID"], axis=1)
-    df = df.rename(
-        columns={
-            "KSPSAP_FLUX": "DET_FLUX",
-            "KSPSAP_FLUX_ERR": "DET_FLUX_ERR",
-            "KSPSAP_FLUX_SML": "DET_FLUX_SML",
-            "KSPSAP_FLUX_LAG": "DET_FLUX_LAG",
-        }
-    )
-    df = df.dropna()
-    df = df[~df.isin([np.inf]).any(axis=1)]
-    probabilities = model.predict_proba(df)[:, 1]
-    final_prediction = mean_prediction(probabilities, threshold)
-    return final_prediction
-
-
-def evaluate_model_mean(
-    validation_confirmed_path, validation_false_path, model, threshold=0.3
-):
-    true_labels = []
-    predicted_labels = []
-
-    for file in os.listdir(validation_confirmed_path):
-        if file.endswith(".csv"):
-            filepath = os.path.join(validation_confirmed_path, file)
-            true_labels.append(1)
-            predicted_labels.append(
-                aggregate_predictions_mean(filepath, model, threshold)
-            )
-
-    for file in os.listdir(validation_false_path):
-        if file.endswith(".csv"):
-            filepath = os.path.join(validation_false_path, file)
-            true_labels.append(0)
-            predicted_labels.append(
-                aggregate_predictions_mean(filepath, model, threshold)
-            )
-
-    accuracy = accuracy_score(true_labels, predicted_labels)
-    precision = precision_score(true_labels, predicted_labels)
-    recall = recall_score(true_labels, predicted_labels)
-    f1 = f1_score(true_labels, predicted_labels)
-
-    print(f"Accuracy for Raw Data Model: {accuracy}")
-    print(f"Precision for Raw Data Model: {precision}")
-    print(f"Recall for Raw Data Model: {recall}")
-    print(f"F1 Score for Raw Data Model: {f1}")
-
-
 def evaluate_model_engineered_features(
     validation_confirmed_path, validation_false_path, model
 ):
@@ -174,14 +117,65 @@ def evaluate_model_engineered_features(
     print(f"Recall for Engineered Feature Model: {recall}")
     print(f"F1 Score for Engineered Feature Model: {f1}")
 
+def majority_voting(predictions):
+    return 1 if sum(predictions) > len(predictions) / 2 else 0
 
+def aggregate_predictions_majority(filepath, model):
+    df = pd.read_csv(filepath)
+    df = df.iloc[:, :13]
+    df = df.drop(["QUALITY", "ORBITID"], axis=1)
+    df = df.rename(
+        columns={
+            "KSPSAP_FLUX": "DET_FLUX",
+            "KSPSAP_FLUX_ERR": "DET_FLUX_ERR",
+            "KSPSAP_FLUX_SML": "DET_FLUX_SML",
+            "KSPSAP_FLUX_LAG": "DET_FLUX_LAG",
+        }
+    )
+    df = df.dropna()
+    df = df[~df.isin([np.inf]).any(axis=1)]
+    classifications_per_row = model.predict(df)
+    final_prediction = majority_voting(classifications_per_row)
+    return final_prediction
+
+def evaluate_model_majority(
+    validation_confirmed_path, validation_false_path, model
+):
+    true_labels = []
+    predicted_labels = []
+
+    for file in os.listdir(validation_confirmed_path):
+        if file.endswith(".csv"):
+            filepath = os.path.join(validation_confirmed_path, file)
+            true_labels.append(1)
+            predicted_labels.append(
+                aggregate_predictions_majority(filepath, model)
+            )
+
+    for file in os.listdir(validation_false_path):
+        if file.endswith(".csv"):
+            filepath = os.path.join(validation_false_path, file)
+            true_labels.append(0)
+            predicted_labels.append(
+                aggregate_predictions_majority(filepath, model)
+            )
+
+    accuracy = accuracy_score(true_labels, predicted_labels)
+    precision = precision_score(true_labels, predicted_labels)
+    recall = recall_score(true_labels, predicted_labels)
+    f1 = f1_score(true_labels, predicted_labels)
+
+    print(f"Accuracy for Majority Vote Model: {accuracy}")
+    print(f"Precision for Majority Vote Model: {precision}")
+    print(f"Recall for Majority Vote Model: {recall}")
+    print(f"F1 Score for Majority Vote Model: {f1}")
+
+
+evaluate_model_majority(
+    validation_confirmed_lc_path, validation_false_lc_path, raw_data_model
+)
+print("*" * 50)
 evaluate_model_engineered_features(
     validation_confirmed_lc_path, validation_false_lc_path, feature_engineering_model
 )
 
-evaluate_model_mean(
-    validation_confirmed_lc_path,
-    validation_false_lc_path,
-    raw_data_model,
-    threshold=0.5,
-)
