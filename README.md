@@ -41,10 +41,10 @@ The performance of the models is summarized below:
 - **Stats-based Classifier (First Model)**:
   - Initial high accuracy on row classification: 99.7%
   - Final performance: 
-    - Accuracy: 0.72
-    - Precision: 0.71
+    - Accuracy: 0.75
+    - Precision: 0.76
     - Recall: 0.73
-    - F1 Score: 0.72
+    - F1 Score: 0.75
 - **Stats-based Classifier with Feature Engineering (Second Model)**:
   - Final performance after feature engineering and optimization:
     - Accuracy: 0.62
