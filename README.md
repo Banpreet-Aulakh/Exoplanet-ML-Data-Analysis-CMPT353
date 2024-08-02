@@ -33,9 +33,13 @@ This project focuses on creating a model to classify false positive planets and 
 - **lightcurve_randforest.ipynb**: Processes the data, trains a Random Forest model using raw light curve data, and saves the model using Joblib.
 - **lightcurve_randforest_feature_engineering.ipynb**: Similar to the previous notebook but includes feature engineering to improve model performance.
 - **train_statsmodels.py**: Combines the above notebooks with several quality improvements to output usable .pkl files
+- **LSTMmodel_training.py**: This is the simple python file used for testing and training the LSTM model
+- **TransformerModel_training.py**: This is the simple python file used for testing and training the Transformer model
+- **NN_Training.py**: This file combines and simplifies the LSTM and Tranformer model training files and saves the models as .pkl files
 
 ### Model Evaluation
 - **evaluate_statsmodels.py**: Evaluates both models using a validation dataset consisting of 60 random files from the false and confirmed light curve directories. Files can be downloaded [here](https://drive.google.com/file/d/1aaVGC6HPTHWbxfuUbTZPnbUmz3ApxLam/view?usp=drive_link).
+-**NN_Training.py**: This will evaluate the models throughout the training.
 
 ## Results
 The performance of the models is summarized below:
@@ -68,11 +72,13 @@ The performance of the models is summarized below:
 1. Download the data folder and replace it with the data folder from [here](https://drive.google.com/file/d/1aaVGC6HPTHWbxfuUbTZPnbUmz3ApxLam/view?usp=drive_link) in the cloned directory
    *Alternatively you can use the lightcurve downloader.ipynb and manually download the files in individual batches to suit your needs*
 2. Train the Random Forest models by running `train_statsmodels.py`.
+3. Train the Neural Network models by running `NN_Training.py`. 
 
 ### Evaluating the Models
 1. Ensure you have the data in the correct directories. (It should be if you ran `train_statsmodels.py` above)
-2. Run `evaluate_model.py` to evaluate both stats-based classifier models using the validation dataset.
+3. Run `evaluate_model.py` to evaluate both stats-based classifier models using the validation dataset.
    *You can also test it on the other validation lightcurves, but those only contain confirmed data, no false positives*
+3. Run `NN_Training.py`, it will validate the data after every epoch.
 
 ## Dependencies
 - lightkurve
