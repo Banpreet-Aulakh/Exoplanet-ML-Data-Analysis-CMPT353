@@ -58,14 +58,14 @@ The performance of the models is summarized below:
     - F1 Score: 0.62
 - **LSTM Model - Best Average of 10 Consecutive Epochs**:
   - Final performance after optimization:
-    - Training Accuracy: 0.
-    - Validation Accuracy: 0.
-    - Loss: 0.
+    - Training Accuracy: 0.7072
+    - Validation Accuracy: 0.5877
+    - Loss: 0.5584
 - **Transformer Model - Best Average of 10 Consecutive Epochs**:
   - Final performance after optimization:
-    - Training Accuracy: 0.
-    - Validation Accuracy: 0.
-    - Loss: 0.
+    - Training Accuracy: 0.6316
+    - Validation Accuracy: 0.5531
+    - Loss: 0.6518
 
 ## Usage
 ### Training the Models
