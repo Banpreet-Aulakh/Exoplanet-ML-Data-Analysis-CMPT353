@@ -52,6 +52,16 @@ The performance of the models is summarized below:
     - Precision: 0.61
     - Recall: 0.63
     - F1 Score: 0.62
+- **LSTM Model - Best Average of 10 Consecutive Epochs**:
+  - Final performance after optimization:
+    - Training Accuracy: 0.
+    - Validation Accuracy: 0.
+    - Loss: 0.
+- **Transformer Model - Best Average of 10 Consecutive Epochs**:
+  - Final performance after optimization:
+    - Training Accuracy: 0.
+    - Validation Accuracy: 0.
+    - Loss: 0.
 
 ## Usage
 ### Training the Models
@@ -74,6 +84,8 @@ The performance of the models is summarized below:
 - zip
 - sklearn
 - AstroPy
+- torch
+- glob
 
 ## Team
 - Banpreet Aulakh
