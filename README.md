@@ -39,7 +39,7 @@ This project focuses on creating a model to classify false positive planets and 
 
 ### Model Evaluation
 - **evaluate_statsmodels.py**: Evaluates both models using a validation dataset consisting of 60 random files from the false and confirmed light curve directories. Files can be downloaded [here](https://drive.google.com/file/d/1aaVGC6HPTHWbxfuUbTZPnbUmz3ApxLam/view?usp=drive_link).
--**NN_Training.py**: This will evaluate the models throughout the training.
+- **NN_Training.py**: This will evaluate the models throughout the training.
 
 ## Results
 The performance of the models is summarized below:
