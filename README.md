@@ -90,7 +90,7 @@ The performance of the models is summarized below:
 - zip
 - sklearn
 - AstroPy
-- torch
+- PyTorch
 - glob
 
 ## Team
